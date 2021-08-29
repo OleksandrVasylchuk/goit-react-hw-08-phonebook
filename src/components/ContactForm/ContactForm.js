@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import * as operations from "../../redux/contacts/contacts-operations";
 import { getContacts } from "../../redux/contacts/contacts-selectors";
 import s from "./ContactForm.module.css";
+import { MdPerson } from "react-icons/md";
+import { MdStayPrimaryPortrait } from "react-icons/md";
 
 export default function ContactForm() {
   const contacts = useSelector(getContacts);
@@ -69,27 +71,31 @@ export default function ContactForm() {
   return (
     <form className={s.form} onSubmit={handleSubmit}>
       <label className={s.label}>
+        <MdPerson></MdPerson>
         Name
         <input
           className={s.input}
           type="text"
           name="name"
           value={name}
-          placeholder="Eden Clements"
+          placeholder="Oleksandr Vasylchuk"
           onChange={handleChangeName}
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          maxLength="33"
         />
       </label>
 
       <label className={s.label}>
+        <MdStayPrimaryPortrait></MdStayPrimaryPortrait>
         Number
         <input
-          className={s.input}
           type="tel"
           name="number"
           value={number}
           placeholder="000-00-00"
           onChange={handleChangeNumber}
-          pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          maxLength="20"
         />
       </label>
       <button className={s.btn} type="submit">

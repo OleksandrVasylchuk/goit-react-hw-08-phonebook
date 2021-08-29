@@ -2,7 +2,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 // import serviceAPI from '../../services/service-api';
 
-axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
+axios.defaults.baseURL = "https://connections-api.herokuapp.com/";
 
 const token = {
   set(token) {
